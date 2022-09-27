@@ -1,59 +1,52 @@
-### 1. Python 주요 라이브러리
-
-#### 1-1) 내장함수
+### Python 기초 문법 
 
 ```python
-result = sum([1,2,3])
-print(result) # 6
+# round(값 , 반올림하고자 하는 위치 -1)
+_val = round(123.456,2)
+print(_val)  # 123.46
 
-result = min(7,5,3)
-print(result)  # 3
+# 자료형 연산
+_a = 7
+_b = 3
 
-result = max(6,3,2)
-print(result) # 6
-
-result = eval("(3 + 5) * 7") # 수학 수식이 문자열 형식으로 들어오면 해당 수식 계산
-print(result) # 56
-
-result = sorted([6,1,3])
-print(result) # [1,3,6]
-
-result = sorted([6,1,3],reverse = True)
-print(result) # [6,3,1]
-
-# 람다식을 이용한 리스트나 튜플이 존재할 때 특정한 기준에 따라서 정렬
-result = sorted([('a',1),('b',6),('c',5)], key = lambda x : x[1], reverse = True)
-print(result) #[('b',6),('c',5),('a',1)]
+print(_a / _b) # 나누기 2.333333... 파이썬에서 나누기 연산자는 나눠진 결과를 기본적으로 실수형으로 처리
+print(_a % _b) # 나머지 1
+print(_a // _b) # 몫 2
+print(_a ** _b) # 거듭제곱 연산
 ```
 
 
 
-#### 1-2) itertools
-
-- 파이썬에서 반복되는 데이터를 처리하는 기능을 포함하고 있는 라이브러리
+#### list()
 
 ```python
-from itertools import permutations # 객체에서 r개의 데이터를 뽑아 일렬로 나열, 모든 순열 계산
+# 리스트 선언
+_list = [1,2,3,4]
+_list_1 = list() # 빈 리스트 선언 
 
-data = ['A','B','C']
-result = list(permutations(data,3)) # data에서 3개를 뽑아 순열 구하기
-print(result) 
-# [('A', 'B', 'C'), ('A', 'C', 'B'), ('B', 'A', 'C'), ('B', 'C', 'A'), ('C', 'A', 'B'), ('C', 'B', 'A')]
+# 크기가 N이고 모든 값이 0인 1차원 리스트 초기화
+_n = 10
+_list = [0]*_n
+print(_list) # [0,0,0,0,0,0,0,0,0,0]
+_list = [1,2,3,4,5,6,7]
+print(_list[1:4]) # [2,3,4]
 
-from itertools import combinations 
-result = list(combinations(data,2)) #순서를 고려하지 않는 2개를 뽑는 모든 조합 구하기
-print(result)
-# [('A', 'B'), ('A', 'C'), ('B', 'C')]
+# 리스트 컴프리헨션 : 리스트 초기화 하는 방법 중 하나
+# 0부터 19까지의 수 중에서 홀수만 포함하는 리스트
+_array = [i for i in range(20) if i % 2 == 1]
+print(_array) #[1,3,5,7,..19]
 
-from itertools import product
-result = list(product(data,repeat = 2)) # 2개를 뽑는 모든 순열 구하기(중복 허용)
-print(result)
-# [('A', 'A'), ('A', 'B'), ('A', 'C'), ('B', 'A'), ('B', 'B'), ('B', 'C'), ('C', 'A'), ('C', 'B'), ('C', 'C')]
+# 1부터 9까지의 수의 제곱 값을 포함하는 리스트
+_array = [i * i for i in range(1,10)]
+print(_array) # [1,4,9,16,...64,81]
 
-from itertools import combinations_with_replacement
-result = list(combinations_with_replacement(data,2)) # 2개를 뽑는 모든 조합 구하기(중복허용)
-print(result)
-# [('A', 'A'), ('A', 'B'), ('A', 'C'), ('B', 'B'), ('B', 'C'), ('C', 'C')]
+# 리스트 컴프리헨션을 이용한 2차원 리스트 초기화 
+# N * M 크기의 2차원 리스트 초기화
+# 주의점 : p423 , 2차원 리스트 초기화 시 리스트 컴프리헨션 사용
+N = 3
+M = 4
+_array = [[0] * m for _ in range(N)]
+print(_array) # [[0,0,0,0],[0,0,0,0],[0,0,0,0]]
 ```
 
 
